@@ -1,0 +1,22 @@
+{
+    "name": "soswapp/js-generic.soswapp",
+    "description": "7 OS Web: JavaScript generic functions",
+    "keywords": ["css", "javascript","7","seven","os","web","generic"],
+    "homepage": "https://github.com/soswapp/js-generic.soswapp",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ikechukwu Okalia",
+            "email": "dev@ikechukwuokalia.com"
+        },
+        {
+            "name": "Tym Frontiers Ltd.",
+            "email": "dev@tymfrontiers.com"
+        }
+    ],
+    "require": {
+      "soswapp/jquery.soswapp" : ">=0.1@stable"
+    },
+    "require-dev": {}
+}
