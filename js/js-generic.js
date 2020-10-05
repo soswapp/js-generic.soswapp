@@ -124,6 +124,19 @@ function file_group (mime) {
   });
   return $return;
 }
+// Implements hashCode method to String prototype
+String.prototype.hashCode = function() {
+  var hash = 0, len = this.length;
+  if (this.length === 0) {
+    return hash;
+  }
+  for (i = 0; i < len; i++) {
+    charC = this.charCodeAt(i);
+    hash = ((hash<<5)-hash)+charC;
+    hash = hash & hash; // Convert to 32bit integer
+  }
+  return hash;
+};
 String.prototype.replaceAll = function(search, replacement) {
     var target = this;
     return target.replace(new RegExp(search, 'g'), replacement);
