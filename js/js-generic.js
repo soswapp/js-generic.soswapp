@@ -786,9 +786,9 @@ function get_query_string(q){
 function set_get(url,k,v){
   var re = new RegExp("([?|&])" + k + "=.*?(&|#|$)", "i"),reH = new RegExp("([&])" + k + "=.*#!(&|$)", "i");
   if (url.match(re)) {
-    return url.replace(re, '$1' + k + "=" + v + '$2');
+    return url.replace(re, '$1' + k + "=" + encode_url(decodeURIComponent(v)) + '$2');
   } else if(url.match(reH)){
-	  return url.replace(reH, '$1' + k + "=" + v + '$2');
+	  return url.replace(reH, '$1' + k + "=" + encode_url(decodeURIComponent(v)) + '$2');
   }else {
     var hash =  '';
     var separator = url.indexOf('?') !== -1 ? "&" : "?";
@@ -796,8 +796,18 @@ function set_get(url,k,v){
         hash = url.replace(/.*#/, '#');
         url = url.replace(/#.*/, '');
     }
-    return url + separator + k + "=" + v + hash;
+    return url + separator + k + "=" + encode_url(decodeURIComponent(v)) + hash;
   }
+}
+function setGet(url = window.location.href, params = {}) {
+  if (typeof params == "object" && object_length(params) > 0) {
+    for (let key in params) {
+      if (params.hasOwnProperty(key) && params[key] !== "") {
+        url = set_get(url, key, params[key]);
+      }
+    }
+  }
+  return url;
 }
 $.fn.pushUp = function(){
       var clicked = $(this);
