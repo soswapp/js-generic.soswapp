@@ -224,9 +224,10 @@ const unset_var = (variable) => {
 }
 function parseBool (val) {
   return (
-    val.toUpperCase === 'TRUE'
+    val.toUpperCase() === 'TRUE'
     || val === 1
     || val === '1'
+    || val === true
   );
 }
 const parse_bool = parseBool;
