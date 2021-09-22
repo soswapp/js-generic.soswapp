@@ -161,6 +161,14 @@ String.prototype.is_valid_url = function () {
     '(\\#[-a-z\\d_]*)?$','i'); // fragment locator
   return !!pattern.test(this);
 }
+String.prototype.escapeHTML = function () {
+  return this.replace(/&/g, "&amp;")
+             .replace(/</g, "&lt;")
+             .replace(/>/g, "&gt;")
+             .replace(/"/g, "&quot;")
+             .replace(/'/g, "&#039;")
+             .replace(/(?:\r\n|\r|\n)/g, "");
+}
 const object_length = (object = {}) => {
   if (typeof object !== "object") return "N/A";
   return Object.keys(object).length;
